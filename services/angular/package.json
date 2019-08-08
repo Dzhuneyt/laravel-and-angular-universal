@@ -7,7 +7,13 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compile:server": "webpack --config webpack.server.config.js --progress --colors",
+    "compile:server:watch": "npx nodemon --watch ./dist/server/* --exec 'echo Server bundle change detected. Rebuilding NodeJS && npm run compile:server && npm run serve:ssr'",
+    "serve:ssr": "node dist/server",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "build:client-and-server-bundles": "npx concurrently -n browser,server 'ng build --prod' 'ng run frontend:server:production --bundleDependencies all'",
+    "build:client-and-server-bundles:watch": "npx concurrently -n browser,server 'ng build --prod --watch' 'ng run frontend:server:production --bundleDependencies all --watch'"
   },
   "private": true,
   "dependencies": {
@@ -18,7 +24,13 @@
     "@angular/forms": "~8.2.0",
     "@angular/platform-browser": "~8.2.0",
     "@angular/platform-browser-dynamic": "~8.2.0",
+    "@angular/platform-server": "~8.2.0",
     "@angular/router": "~8.2.0",
+    "@ng-toolkit/universal": "^1.1.21",
+    "@nguniversal/express-engine": "^8.1.1",
+    "@nguniversal/module-map-ngfactory-loader": "8.1.1",
+    "concurrently": "^4.1.1",
+    "express": "^4.15.2",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
@@ -28,9 +40,9 @@
     "@angular/cli": "~8.2.0",
     "@angular/compiler-cli": "~8.2.0",
     "@angular/language-service": "~8.2.0",
-    "@types/node": "~8.9.4",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
     "codelyzer": "^5.0.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
@@ -39,9 +51,13 @@
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
+    "nodemon": "^1.19.1",
     "protractor": "~5.4.0",
+    "ts-loader": "^5.2.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "wait-on": "^3.3.0",
+    "webpack-cli": "^3.1.0"
   }
 }
