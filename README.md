@@ -4,6 +4,11 @@
 
 Docker Compose based, Laravel + Angular template for quickly starting new projects that use Laravel for the backend (REST APIs) and Angular (plus server side rendering) for the frontend.
 
+## Requirements
+
+* Docker
+* Docker Compose
+
 ### Starting the stack
 
     docker-compose up
