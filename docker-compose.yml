@@ -18,9 +18,6 @@ services:
   backend:
     build:
       context: ./services/laravel
-    environment:
-      - MAIL_USERNAME=${MAILTRAP_USERNAME}
-      - MAIL_PASSWORD=${MAILTRAP_PASSWORD}
     volumes:
       # Enforce "read only" to make sure the app is totally immutable
       - ./services/laravel:/var/www:ro
