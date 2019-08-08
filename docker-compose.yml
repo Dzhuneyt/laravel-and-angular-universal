@@ -6,3 +6,8 @@ services:
       context: ./services/angular
     ports:
       - 9091:4000
+  backend:
+    build:
+      context: ./services/laravel
+    ports:
+      - 9092:80
