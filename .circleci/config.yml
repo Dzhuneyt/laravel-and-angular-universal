@@ -14,4 +14,4 @@ jobs:
       - setup_remote_docker
       - run:
           name: Build Docker images
-          command: docker-compose build --parallel
+          command: docker-compose up --build -d
