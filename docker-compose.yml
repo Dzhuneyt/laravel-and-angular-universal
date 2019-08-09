@@ -18,6 +18,8 @@ services:
   backend:
     build:
       context: ./services/laravel
+    env_file:
+      - ./services/laravel/.env.example.docker
     volumes:
       # Enforce "read only" to make sure the app is totally immutable
       - ./services/laravel:/var/www:ro
