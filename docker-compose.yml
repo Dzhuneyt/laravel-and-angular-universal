@@ -21,7 +21,6 @@ services:
     volumes:
       # Enforce "read only" to make sure the app is totally immutable
       - ./services/laravel:/var/www:ro
-      - ./services/laravel/.env.example.docker:/var/www/.env:ro
     ports:
       - 9092:80
 
