@@ -15,14 +15,17 @@ services:
       context: ./services/angular
     ports:
       - 9091:4000
+    volumes:
+      # Mount the app for development purposes
+      - ./services/angular:/app:ro # Enforce immutable app
   backend:
     build:
       context: ./services/laravel
     env_file:
       - ./services/laravel/.env.example.docker
     volumes:
-      # Enforce "read only" to make sure the app is totally immutable
-      - ./services/laravel:/var/www:ro
+      # Mount the app for development purposes
+      - ./services/laravel:/var/www:ro # Enforce immutable app
     ports:
       - 9092:80
 

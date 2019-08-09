@@ -9,11 +9,12 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "compile:server": "webpack --config webpack.server.config.js",
-    "compile:server:watch": "npx nodemon --watch ./dist/server/* --exec 'echo Server bundle change detected. Rebuilding NodeJS && npm run compile:server && npm run serve:ssr'",
+    "compile:server:watch": "npx nodemon --watch ./dist/server/* --watch ./server.ts --exec 'echo Server bundle change detected. Rebuilding NodeJS && npm run compile:server && npm run serve:ssr'",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
     "build:client-and-server-bundles": "npx concurrently -n browser_bundle,server_bundle 'ng build --prod' 'ng run frontend:server:production --bundleDependencies all'",
-    "build:client-and-server-bundles:watch": "npx concurrently -n browser_bundle,server_bundle 'ng build --prod --watch' 'ng run frontend:server:production --bundleDependencies all --watch'"
+    "build:client-and-server-bundles:watch": "npx concurrently -n browser_bundle,server_bundle 'ng build --prod --watch' 'ng run frontend:server:production --bundleDependencies all --watch'",
+    "dev": "./universal_watch.sh"
   },
   "private": true,
   "dependencies": {

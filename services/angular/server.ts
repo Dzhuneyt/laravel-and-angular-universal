@@ -40,6 +40,11 @@ app.engine('html', ngExpressEngine({
 app.set('view engine', 'html');
 app.set('views', DIST_FOLDER);
 
+app.get('favicon.ico', (req, res) => {
+  console.log('favicon');
+  res.sendStatus(404);
+});
+
 // Example Express Rest API endpoints
 // app.get('/api/**', (req, res) => { });
 // Serve static files from /browser

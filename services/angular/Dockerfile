@@ -24,10 +24,10 @@ FROM node:10-alpine
 
 RUN npm install pm2 -g
 
-WORKDIR /
+WORKDIR /app
 
 ## From ‘builder’ stage copy over the artifacts
-COPY --from=builder /ng-app/dist /dist
+COPY --from=builder /ng-app/dist /app/dist
 EXPOSE 4000
 
 CMD ["pm2-runtime", "dist/server"]
