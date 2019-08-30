@@ -5,7 +5,7 @@ services:
     build:
       context: ./services/nginx
     ports:
-      - 80:80
+      - ${PORT}:80
     depends_on:
       - backend
       - frontend
