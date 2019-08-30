@@ -13,5 +13,8 @@ jobs:
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - setup_remote_docker
       - run:
+          name: Create .env file
+          command: cp .env.dist .env
+      - run:
           name: Build Docker images
           command: docker-compose up --build -d
