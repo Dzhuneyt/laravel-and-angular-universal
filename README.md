@@ -13,6 +13,10 @@ Docker Compose based, Laravel + Angular template for quickly starting new projec
 
     docker-compose up
     
+###  Build the frontend
+
+    cd ./services/angular && npm run dev
+    
 ### Executing DB migrations
 
     docker-compose exec backend php artisan migrate
